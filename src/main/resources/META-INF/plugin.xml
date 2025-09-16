@@ -1,18 +1,12 @@
 <idea-plugin>
   <id>com.google.bamboo.id</id>
   <name>Bamboo Soy</name>
-  <version></version>
   <vendor>Google</vendor>
 
   <description><![CDATA[
       Syntax highlighting, autocompletion, static analysis and more for your closure template files.
     ]]>
   </description>
-
-  <change-notes></change-notes>
-
-  <!-- Both @since-build and @until-build will be set at build time by Gradle. -->
-  <idea-version since-build="0"/>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
@@ -148,9 +142,6 @@
     <annotator
         language="ClosureTemplate"
         implementationClass="com.google.bamboo.soy.insight.annotators.UnterminatedCommentAnnotator"/>
-
-    <errorHandler
-        implementation="com.google.bamboo.soy.RollbarErrorReportSubmitter"/>
   </extensions>
 
   <actions>

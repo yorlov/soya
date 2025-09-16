@@ -77,6 +77,28 @@ NonSemantical=({WhiteSpace}|{LineComment}|{DocCommentBlock}|{BlockComment})*
 %state IMPORT
 %state IMPORT_CONTINUATION
 
+%{
+  /** stack for saving lexical states */
+  private java.util.Stack<Integer> zzLexicalStateStack =
+      new java.util.Stack<>();
+
+  /**
+   * Saves the current lexical state onto stack
+   *
+   * @param state the lexical state to save
+   */
+  public final void yypush() {
+    zzLexicalStateStack.push(yystate());
+  }
+
+  /**
+   * Loads the current lexical state from stack
+   */
+  public final void yypop() {
+    yybegin(zzLexicalStateStack.pop());
+  }
+%}
+
 %%
 
 // -- Literal tags: ensure we parse literal tags and eat their whole content first without matching
