@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "bamboo-soy"
+rootProject.name = "soya"

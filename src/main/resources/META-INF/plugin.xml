@@ -1,7 +1,7 @@
 <idea-plugin>
-  <id>com.google.bamboo.id</id>
-  <name>Bamboo Soy</name>
-  <vendor>Google</vendor>
+  <id>it.orlov.soya</id>
+  <name>Soya</name>
+  <vendor email="yuri.n.orlov@gmail.com" url="https://www.orlov.it">Yuri Orlov</vendor>
 
   <description><![CDATA[
       Syntax highlighting, autocompletion, static analysis and more for your closure template files.

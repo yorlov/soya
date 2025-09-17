@@ -1,3 +1,4 @@
+import org.jetbrains.changelog.Changelog.OutputType.HTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_1
@@ -7,6 +8,7 @@ plugins {
     id("org.jetbrains.intellij.platform") version "2.9.0"
     id("org.jetbrains.kotlin.jvm") version "2.2.20"
     id("org.jetbrains.grammarkit") version "2022.3.2.2"
+    id("org.jetbrains.changelog") version "2.4.0"
 }
 
 repositories {
@@ -20,16 +22,26 @@ repositories {
 intellijPlatform {
     pluginConfiguration {
         ideaVersion {
-            sinceBuild.set("252")
-            untilBuild.set("253.*")
+            sinceBuild.set("251")
         }
+
+        changeNotes.set(provider {
+            val changes = if ("SNAPSHOT" in "${project.version}") changelog.getUnreleased() else changelog.getLatest()
+            changelog.renderItem(changes, HTML)
+        })
+    }
+
+    publishing {
+        token.set(System.getenv("INTELLIJ_PUBLISH_TOKEN"))
     }
 
     pluginVerification {
         ides {
-            ides(listOf("IU-2025.2"))
+            ides(listOf("IU-2025.1", "IU-2025.2"))
         }
     }
+
+    buildSearchableOptions.set(false)
 }
 
 kotlin {
@@ -38,6 +50,10 @@ kotlin {
         jvmTarget = JVM_21
         apiVersion = KOTLIN_2_1
     }
+}
+
+changelog {
+    groups.set(emptyList())
 }
 
 sourceSets {
