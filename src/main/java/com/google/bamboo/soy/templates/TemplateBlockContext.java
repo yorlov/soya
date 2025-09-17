@@ -24,7 +24,7 @@ import com.intellij.psi.PsiFile;
 
 public class TemplateBlockContext extends TemplateContextType {
   protected TemplateBlockContext() {
-    super("CLOSURE_TEMPLATE_TEMPLATE_BLOCK", "Closure template: template block");
+    super("Closure template: template block");
   }
 
   @Override

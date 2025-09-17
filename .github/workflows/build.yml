@@ -15,4 +15,4 @@ jobs:
         with:
           gradle-version: '9.0.0'
           cache-cleanup: always
-      - run: gradle test
+      - run: gradle test verifyPlugin

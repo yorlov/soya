@@ -24,6 +24,12 @@ intellijPlatform {
             untilBuild.set("253.*")
         }
     }
+
+    pluginVerification {
+        ides {
+            ides(listOf("IU-2025.2"))
+        }
+    }
 }
 
 kotlin {
@@ -70,6 +76,7 @@ dependencies {
     intellijPlatform {
         intellijIdeaUltimate("LATEST-EAP-SNAPSHOT", false)
         testFramework(TestFrameworkType.Platform)
+        pluginVerifier()
     }
     testImplementation("junit:junit:4.13.2")
 }

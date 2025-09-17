@@ -61,10 +61,13 @@
     <typedHandler
         implementation="com.google.bamboo.soy.insight.typedhandlers.MemberHandler"/>
     <liveTemplateContext
+        contextId="CLOSURE_TEMPLATE_TOP_LEVEL"
         implementation="com.google.bamboo.soy.templates.TopLevelContext"/>
     <liveTemplateContext
+        contextId="CLOSURE_TEMPLATE_CALL_BLOCK"
         implementation="com.google.bamboo.soy.templates.CallBlockContext"/>
     <liveTemplateContext
+        contextId="CLOSURE_TEMPLATE_TEMPLATE_BLOCK"
         implementation="com.google.bamboo.soy.templates.TemplateBlockContext"/>
     <defaultLiveTemplates file="liveTemplates/ClosureTemplates"/>
 
@@ -86,7 +89,7 @@
         implementation="com.google.bamboo.soy.stubs.index.TemplateBlockIndex"/>
 
     <!-- Refactoring -->
-    <psi.referenceContributor
+    <psi.referenceContributor language="ClosureTemplate"
         implementation="com.google.bamboo.soy.refactoring.SoyReferenceContributor"/>
     <lang.refactoringSupport language="ClosureTemplate"
         implementationClass="com.google.bamboo.soy.refactoring.SoyRefactoringSupportProvider"/>

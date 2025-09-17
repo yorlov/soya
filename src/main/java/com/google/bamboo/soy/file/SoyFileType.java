@@ -33,7 +33,7 @@ public class SoyFileType extends LanguageFileType implements TemplateLanguageFil
 
   private SoyFileType() {
     super(SoyLanguage.INSTANCE);
-    FileTypeEditorHighlighterProviders.INSTANCE.addExplicitExtension(
+    FileTypeEditorHighlighterProviders.getInstance().addExplicitExtension(
         this,
         (@Nullable Project project,
             @NotNull FileType fileType,

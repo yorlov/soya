@@ -59,8 +59,7 @@ public class TemplateNameUtils {
     }
 
     Project project = element.getProject();
-    return TemplateBlockIndex.INSTANCE
-        .get(identifier, project, GlobalSearchScope.allScope(project))
+    return TemplateBlockIndex.templateBlocks(identifier, project, GlobalSearchScope.allScope(project))
         .stream()
         .filter((block) -> block.getDefinitionIdentifier() != null)
         .collect(Collectors.toList());
@@ -74,9 +73,7 @@ public class TemplateNameUtils {
         .stream()
         .flatMap(
             (key) ->
-                TemplateBlockIndex.INSTANCE
-                    .get(
-                        key, file.getProject(), GlobalSearchScope.fileScope(file.getOriginalFile()))
+                TemplateBlockIndex.templateBlocks(key, file.getProject(), GlobalSearchScope.fileScope(file.getOriginalFile()))
                     .stream()
                     .filter((block) -> !block.isDelegate())
                     .map(SoyTemplateBlock::getName))
@@ -120,8 +117,7 @@ public class TemplateNameUtils {
         // Also checks template's lang.
         .filter(
             (key) ->
-                TemplateBlockIndex.INSTANCE
-                    .get(key, project, scope)
+                TemplateBlockIndex.templateBlocks(key, project, scope)
                     .stream()
                     .anyMatch((block) -> block.isDelegate() == isDelegate))
 

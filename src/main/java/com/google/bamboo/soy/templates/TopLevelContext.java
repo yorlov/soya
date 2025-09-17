@@ -24,7 +24,7 @@ import com.intellij.psi.PsiFile;
 
 public class TopLevelContext extends TemplateContextType {
   protected TopLevelContext() {
-    super("CLOSURE_TEMPLATE_TOP_LEVEL", "Closure template: top level");
+    super("Closure template: top level");
   }
 
   @Override

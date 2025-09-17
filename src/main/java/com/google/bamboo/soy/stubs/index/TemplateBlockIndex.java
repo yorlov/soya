@@ -17,7 +17,9 @@ package com.google.bamboo.soy.stubs.index;
 import com.google.bamboo.soy.parser.SoyTemplateBlock;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
+import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.stubs.StringStubIndexExtension;
+import com.intellij.psi.stubs.StubIndex;
 import com.intellij.psi.stubs.StubIndexKey;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,6 +29,14 @@ public class TemplateBlockIndex extends StringStubIndexExtension<SoyTemplateBloc
   public static final StubIndexKey<String, SoyTemplateBlock> KEY =
       StubIndexKey.createIndexKey("SoyTemplateBlock");
   public static final TemplateBlockIndex INSTANCE = new TemplateBlockIndex();
+
+  public static Collection<SoyTemplateBlock> templateBlocks(
+      @NotNull String key,
+      @NotNull Project project,
+      @NotNull GlobalSearchScope scope
+  ) {
+      return StubIndex.getElements(KEY, key, project, scope, SoyTemplateBlock.class);
+  }
 
   @NotNull
   @Override

@@ -17,7 +17,8 @@ package com.google.bamboo.soy.format;
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.psi.codeStyle.CodeStyleManager;
-import com.intellij.util.containers.ContainerUtil;
+
+import java.util.List;
 
 public class SoyFormatterTest extends SoyCodeInsightFixtureTestCase {
 
@@ -30,7 +31,7 @@ public class SoyFormatterTest extends SoyCodeInsightFixtureTestCase {
     myFixture.configureByFiles(getTestName(false) + ".soy");
     WriteCommandAction.writeCommandAction(getProject()).compute(() -> {
       CodeStyleManager.getInstance(getProject()).reformatText(myFixture.getFile(),
-          ContainerUtil.newArrayList(myFixture.getFile().getTextRange()));
+          List.of(myFixture.getFile().getTextRange()));
       return null;
     });
     myFixture.checkResultByFile(getTestName(false) + "_after.soy");

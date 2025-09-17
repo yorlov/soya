@@ -49,11 +49,15 @@ public class SoyParserUtil extends GeneratedParserUtilBase {
   /**
    * Binds the last leading doc comment either on the same or previous line.
    */
-  public static WhitespacesAndCommentsBinder LEADING_COMMENTS_BINDER =
-      new WhitespacesAndCommentsBinder.RecursiveBinder() {
+  public static WhitespacesAndCommentsBinder LEADING_COMMENTS_BINDER = new WhitespacesAndCommentsBinder() {
+
         @Override
-        public int getEdgePosition(
-            List<? extends IElementType> tokens, boolean atStreamEdge, TokenTextGetter getter) {
+        public boolean isRecursive() {
+            return true;
+        }
+
+        @Override
+        public int getEdgePosition(List<? extends IElementType> tokens, boolean atStreamEdge, TokenTextGetter getter) {
           int newLinesFound = 0;
           for (int i = tokens.size() - 1; i > 0; i--) {
             if (tokens.get(i) == DOC_COMMENT_BLOCK) {
@@ -71,11 +75,15 @@ public class SoyParserUtil extends GeneratedParserUtilBase {
   /**
    * Binds the trailing doc comments on the same line
    */
-  public static WhitespacesAndCommentsBinder TRAILING_COMMENTS_BINDER =
-      new WhitespacesAndCommentsBinder.RecursiveBinder() {
+  public static WhitespacesAndCommentsBinder TRAILING_COMMENTS_BINDER = new WhitespacesAndCommentsBinder() {
+
         @Override
-        public int getEdgePosition(
-            List<? extends IElementType> tokens, boolean atStreamEdge, TokenTextGetter getter) {
+        public boolean isRecursive() {
+            return true;
+        }
+
+        @Override
+        public int getEdgePosition(List<? extends IElementType> tokens, boolean atStreamEdge, TokenTextGetter getter) {
           int edgePosition = 0;
           for (int i = 0; i < tokens.size(); i++) {
             if (tokens.get(i) == DOC_COMMENT_BLOCK) {

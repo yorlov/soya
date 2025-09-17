@@ -24,7 +24,7 @@ import com.intellij.psi.PsiFile;
 
 public class CallBlockContext extends TemplateContextType {
   protected CallBlockContext() {
-    super("CLOSURE_TEMPLATE_CALL_BLOCK", "Closure template: call block");
+    super("Closure template: call block");
   }
 
   @Override

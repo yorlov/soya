@@ -26,7 +26,7 @@ public class SoyIcons {
   static final Icon CODE_INJECT = AllIcons.Nodes.Plugin;
   static final Icon CODE_NAMESPACE = IconLoader.getIcon("/icons/namespace.png", SoyIcons.class);
   static final Icon CODE_PARAMETER = AllIcons.Nodes.Parameter;
-  static final Icon CODE_STATE = AllIcons.Nodes.J2eeParameter;
+  static final Icon CODE_STATE = AllIcons.Nodes.ClassInitializer;
   static final Icon CODE_TEMPLATE = IconLoader.getIcon("/icons/template.png", SoyIcons.class);
   static final Icon CODE_VARIABLE = AllIcons.Nodes.Variable;
 }
